@@ -21,3 +21,9 @@ az group create --name $appname --location westeurope
 $appname="harvesthelper"
 az cosmosdb create --name $appname --resource-group $appname --kind MongoDB --enable-free-tier
 ```
+
+## Creating an Azure service bus namespace
+```powershell
+$appname="harvesthelper"
+az servicebus namespace create --name $appname --resource-group $appname --sku Standard
+```
