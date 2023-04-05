@@ -12,8 +12,12 @@ dotnet nuget add source --username Duarte --password $gh_pat --store-password-in
 
 ## Creating an Azure resource group
 ```powershell
-
 $appname="harvesthelper"
 az group create --name $appname --location westeurope
+```
 
+## Creating an Azure Cosmos DB account
+```powershell
+$appname="harvesthelper"
+az cosmosdb create --name $appname --resource-group $appname --kind MongoDB --enable-free-tier
 ```
