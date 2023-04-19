@@ -33,3 +33,19 @@ az servicebus namespace create --name $appname --resource-group $appname --sku S
 $appname="harvesthelper"
 az acr create --name $appname --resource-group $appname --sku Basic
 ```
+
+### Creating a AKS cluster
+```powershell
+$appname="harvesthelper"
+
+az extension add --name aks-preview
+az feature register --name "EnableWorkloadIdentityPreview" --namespace "Microsoft.ContainerService"
+
+az feature list -o table
+
+az provider register --namespace Microsoft.ContainerService
+
+az aks create -n $appname -g $appname --node-vm-size Standard_B2s --node-count 2 --attach-acr $appname --enable-oidc-issuer --enable-workload-identity
+
+az aks get-credentials --name $appname --resource-group $appname
+```
