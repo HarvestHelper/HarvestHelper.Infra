@@ -57,3 +57,17 @@ $appname="harvesthelper"
 az keyvault create -n $appname -g $appname
 
 ```
+
+### Installing Emissary-Ingress 
+```powershell
+helm repo add datawire https://app.getambassador.io
+helm repo update
+
+kubectl apply -f https://app.getambassador.io/yaml/emissary/3.6.0/emissary-crds.yaml
+kubectl wait --timeout=90s --for=condition=available deployment emissary-apiext -n emissary-system
+
+$namespace="emissary"
+$appname="harvesthelper"
+helm install emissary-ingress datawire/emissary-ingress --set service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=$appname -n $namespace --create-namespace
+kubectl rollout status deployment/emissary-ingress -n $namespace -w
+```
