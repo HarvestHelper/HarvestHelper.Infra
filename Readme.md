@@ -71,3 +71,10 @@ $appname="harvesthelper"
 helm install emissary-ingress datawire/emissary-ingress --set service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=$appname -n $namespace --create-namespace
 kubectl rollout status deployment/emissary-ingress -n $namespace -w
 ```
+
+### Config Emissary-Ingress routing
+```powershell
+$namespace="emissary"
+kubectl apply -f .\emissary-ingress\listener.yaml -n $namespace
+kubectl apply -f .\emissary-ingress\mappings.yaml -n $namespace
+```
