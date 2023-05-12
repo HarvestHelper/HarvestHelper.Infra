@@ -6,3 +6,13 @@ spec:
   hostname: harvesthelper.westeurope.cloudapp.azure.com
   prefix: /identity-svc/
   service:  identity-service.identity
+
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Mapping
+metadata:
+  name: equipment-mapping
+spec:
+  hostname: harvesthelper.westeurope.cloudapp.azure.com
+  prefix: /equipment-svc/
+  service:  equipment-service.equipment
