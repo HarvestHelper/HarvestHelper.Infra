@@ -1,0 +1,4 @@
+apiVersion: v2
+name: microserviceName
+description: Installs a HarvestHelper microserviceName
+version: 0.1.0
