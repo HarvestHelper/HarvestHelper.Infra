@@ -118,3 +118,14 @@ helm registry login "$appname.azurecr.io" --username $helmUser --password $helmP
 
 helm push microservice-0.1.0.tgz oci://$appname.azurecr.io/helm
 ```
+
+
+## Create GitHub service principal
+```powershell
+$appname="harvesthelper"
+$appId = az ad sp create-for-rbac -n "GitHub" --query appId --output tsv
+
+az role assignment create --assignee $appId --role "AcrPush" --resource-group $appname
+az role assignment create --assignee $appId --role "Azure Kubernetes Service Cluster User Role" --resource-group $appname
+az role assignment create --assignee $appId --role "Azure Kubernetes Service Contributor Role" --resource-group $appname
+```
