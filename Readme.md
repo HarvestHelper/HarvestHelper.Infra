@@ -45,7 +45,7 @@ az feature list -o table
 
 az provider register --namespace Microsoft.ContainerService
 
-az aks create -n $appname -g $appname --node-vm-size Standard_B2s --node-count 2 --attach-acr $appname --enable-oidc-issuer --enable-workload-identity
+az aks create -n $appname -g $appname --node-vm-size Standard_B2s --node-count 2 --attach-acr $appname --enable-oidc-issuer --enable-workload-identity --generate-ssh-keys
 
 az aks get-credentials --name $appname --resource-group $appname
 ```
