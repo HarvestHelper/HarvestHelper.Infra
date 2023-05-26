@@ -26,3 +26,13 @@ spec:
   hostname: harvesthelper.westeurope.cloudapp.azure.com
   prefix: /equipmentinventory-svc/
   service:  equipmentinventory-service.equipmentinventory
+
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Mapping
+metadata:
+  name: frontend-mapping
+spec:
+  hostname: harvesthelper.westeurope.cloudapp.azure.com
+  prefix: /
+  service:  frontend-client.frontend
